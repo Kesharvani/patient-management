@@ -2,7 +2,10 @@ import "./PatientModal.css";
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { addPatient, updatePatient } from "../feature/patient/patientSlice";
+import { useDispatch } from "react-redux";
 export default function PatientModal(props) {
+  const dispatch = useDispatch();
   const patient = props.patient ? props.patient : null;
   const [newPatient, setNewPatient] = useState({
     name: patient ? patient.name : "",
@@ -41,8 +44,14 @@ export default function PatientModal(props) {
     setNewPatient((prev) => ({ ...prev, [name]: value }));
   };
 
-  const submit = () => {
-    console.log("submitted");
+  const submit = (e) => {
+    e.preventDefault();
+    if (patient) {
+      dispatch(updatePatient({ id: patient._id, updatedPatient: newPatient }));
+    } else {
+      dispatch(addPatient(newPatient));
+    }
+    closeModal();
   };
 
   return (
