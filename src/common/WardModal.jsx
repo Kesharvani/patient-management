@@ -2,7 +2,11 @@ import "./WardModal.css";
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { addWard, updateWard } from "../feature/ward/WardSlice";
+import { useDispatch } from "react-redux";
+
 export default function WardModal(props) {
+  const dispatch = useDispatch();
   const ward = props.ward ? props.ward : null;
   const [newWard, setNewWard] = useState({
     wardNumber: ward ? ward.wardNumber : "",
@@ -39,8 +43,14 @@ export default function WardModal(props) {
     setNewWard((prev) => ({ ...prev, [name]: value }));
   };
 
-  const submit = () => {
-    console.log("submitted");
+  const submit = (e) => {
+    e.preventDefault();
+    if (ward) {
+      dispatch(updateWard({ id: ward?._id, updatedWard: newWard }));
+    } else {
+      dispatch(addWard(newWard));
+    }
+    closeModal();
   };
 
   const specilizationItems = ["", "Pediatrics", "Surgery", "ICU"];

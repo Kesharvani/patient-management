@@ -10,7 +10,9 @@ export default function PatientDetail() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const currentPatient = patientsData.find((patient) => patient._id === id);
-
+  if (!currentPatient) {
+    return <div>Patient not found</div>;
+  }
   const deleteHandler = (id) => {
     dispatch(deletePatient(id));
     navigate("/");
