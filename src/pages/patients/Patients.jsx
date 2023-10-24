@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PatientModal from "../../common/PatientModal";
 const patientsData = [
   {
     _id: "60a39f48c201e339284bbbf0", // Replace with a unique ObjectId
@@ -60,6 +61,7 @@ export default function Patients() {
           );
         })}
       </ul>
+      <PatientModal />
     </div>
   );
 }
