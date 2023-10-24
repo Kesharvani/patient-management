@@ -45,7 +45,6 @@ export default function PatientModal(props) {
     console.log("submitted");
   };
 
-  console.log(newPatient, "newPatient");
   return (
     <div>
       <button onClick={openModal}>{patient ? "Update" : "Add"} Patient</button>

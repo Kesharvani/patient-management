@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import WardModal from "../../common/WardModal";
-export default function Ward() {
+export default function WardDetail() {
   const wardsData = [
     {
       _id: "60a39f48c201e339284bbbf0", // Replace with a unique ObjectId
@@ -34,21 +34,15 @@ export default function Ward() {
       specializations: "Surgery",
     },
   ];
-
+  const { id } = useParams();
+  const currentWard = wardsData.find((ward) => ward._id === id);
   return (
     <div>
-      <ul>
-        {wardsData.map((ward) => {
-          return (
-            <li key={ward._id}>
-              <Link to={`/ward/${ward._id}`}>
-                Ward Number:-<b>{ward.wardNumber}</b>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-      <WardModal />
+      <p>Ward Number:{currentWard.wardNumber}</p>
+      <p>Capacity:{currentWard.capacity}</p>
+      <p>specializations:{currentWard.specializations}</p>
+      <WardModal ward={currentWard} />
+      <button>Delete</button>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { NavLink, Routes, Route } from "react-router-dom";
 import Patients from "./pages/patients/Patients";
 import Ward from "./pages/wards/Ward";
 import PatientDetail from "./pages/patientDetail/PatientDetail";
+import WardDetail from "./pages/wardDetail/WardDetail";
 function App() {
   const style = ({ isActive, isPending }) => {
     return {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/" element={<Patients />} />
           <Route path="/ward" element={<Ward />} />
           <Route path="/patient/:id" element={<PatientDetail />} />
+          <Route path="/ward/:id" element={<WardDetail />} />
         </Routes>
       </div>
     </>
