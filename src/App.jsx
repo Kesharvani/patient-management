@@ -1,6 +1,9 @@
 import "./App.css";
 import { FaHospitalSymbol } from "react-icons/fa";
 import { NavLink, Routes, Route } from "react-router-dom";
+import Patients from "./pages/patients/Patients";
+import Ward from "./pages/wards/Ward";
+import PatientDetail from "./pages/patientDetail/PatientDetail";
 function App() {
   const style = ({ isActive, isPending }) => {
     return {
@@ -27,13 +30,15 @@ function App() {
             <NavLink to="/" style={style}>
               Patient
             </NavLink>
-            <NavLink to="/teacher" style={style}>
+            <NavLink to="/ward" style={style}>
               Ward
             </NavLink>
           </div>
         </nav>
         <Routes>
-          <Route path="/" element={<div>Testing</div>} />
+          <Route path="/" element={<Patients />} />
+          <Route path="/ward" element={<Ward />} />
+          <Route path="/patient/:id" element={<PatientDetail />} />
         </Routes>
       </div>
     </>
