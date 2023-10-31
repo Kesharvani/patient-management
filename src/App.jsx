@@ -6,6 +6,7 @@ import Ward from "./pages/wards/Ward";
 import PatientDetail from "./pages/patientDetail/PatientDetail";
 import WardDetail from "./pages/wardDetail/WardDetail";
 import Hospital from "./pages/hospital/Hospital";
+import Footer from "./common/Footer";
 function App() {
   const style = ({ isActive, isPending }) => {
     return {
@@ -48,6 +49,7 @@ function App() {
           <Route path="/ward/:id" element={<WardDetail />} />
         </Routes>
       </div>
+      <Footer />
     </>
   );
 }
